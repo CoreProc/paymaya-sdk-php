@@ -1,0 +1,44 @@
+{
+    "name": "coreproc/paymaya-sdk",
+    "description": "A better PayMaya SDK",
+    "keywords": [
+        "coreproc",
+        "paymaya-sdk"
+    ],
+    "homepage": "https://github.com/coreproc/paymaya-sdk-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Bautista",
+            "email": "chris.bautista@coreproc.ph",
+            "homepage": "https://coreproc.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.3",
+        "phpunit/phpunit": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "CoreProc\\PayMaya\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CoreProc\\PayMaya\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
