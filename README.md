@@ -1,7 +1,7 @@
 # PayMaya SDK for PHP
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/coreproc/paymaya-sdk.svg?style=flat-square)](https://packagist.org/packages/coreproc/paymaya-sdk)
-[![Quality Score](https://img.shields.io/scrutinizer/g/coreproc/paymaya-sdk.svg?style=flat-square)](https://scrutinizer-ci.com/g/coreproc/paymaya-sdk)
+[![Quality Score](https://img.shields.io/scrutinizer/g/coreproc/paymaya-sdk-php.svg?style=flat-square)](https://scrutinizer-ci.com/g/coreproc/paymaya-sdk)
 [![Total Downloads](https://img.shields.io/packagist/dt/coreproc/paymaya-sdk.svg?style=flat-square)](https://packagist.org/packages/coreproc/paymaya-sdk)
 
 This is an unofficial SDK for PayMaya using PHP but offers improvements over the official PayMaya codebase. 
