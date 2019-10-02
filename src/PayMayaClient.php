@@ -2,18 +2,11 @@
 
 namespace CoreProc\PayMaya;
 
-use CoreProc\PayMaya\Requests\Checkout;
-use CoreProc\PayMaya\Responses\Checkout as CheckoutResponse;
 use Exception;
 use GuzzleHttp\Client;
 
-class PayMayaApi
+class PayMayaClient
 {
-    /**
-     * @var Client
-     */
-    protected $client;
-
     /**
      * @var string
      */
@@ -55,13 +48,6 @@ class PayMayaApi
         $this->secretApiKey = $secretApiKey;
         $this->publicApiKey = $publicApiKey;
         $this->setEnvironment($environment);
-
-        $this->client = new Client([
-            'base_uri' => $this->baseUrl,
-            'headers' => [
-                'Authorization' => 'Basic ' . base64_encode($this->publicApiKey . ':'),
-            ],
-        ]);
     }
 
     /**
@@ -84,16 +70,39 @@ class PayMayaApi
         $this->environment = $environment;
     }
 
-    /**
-     * @param Checkout $checkout
-     * @return CheckoutResponse
-     */
-    public function checkout(Checkout $checkout)
+    public function getPublicAuthKey()
     {
-        $response = $this->client->post('/checkout/v1/checkouts', [
-            'json' => $checkout,
-        ]);
+        return 'Basic ' . base64_encode($this->publicApiKey . ':');
+    }
 
-        return CheckoutResponse::createFromResponse($response);
+    public function getSecretAuthKey()
+    {
+        return 'Basic ' . base64_encode($this->secretApiKey . ':');
+    }
+
+    /**
+     * @return Client
+     */
+    public function getClientWithSecretKey(): Client
+    {
+        return new Client([
+            'base_uri' => $this->baseUrl,
+            'headers' => [
+                'Authorization' => $this->getSecretAuthKey(),
+            ],
+        ]);
+    }
+
+    /**
+     * @return Client
+     */
+    public function getClientWithPublicKey(): Client
+    {
+        return new Client([
+            'base_uri' => $this->baseUrl,
+            'headers' => [
+                'Authorization' => $this->getPublicAuthKey(),
+            ],
+        ]);
     }
 }

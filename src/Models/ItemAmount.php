@@ -1,20 +1,15 @@
 <?php
 
-namespace CoreProc\PayMaya\Requests;
+namespace CoreProc\PayMaya\Models;
 
 use JsonSerializable;
 
-class TotalAmount implements JsonSerializable
+class ItemAmount implements JsonSerializable
 {
     /**
      * @var float
      */
     protected $value;
-
-    /**
-     * @var string
-     */
-    protected $currency;
 
     /**
      * @var AmountDetail
@@ -31,30 +26,11 @@ class TotalAmount implements JsonSerializable
 
     /**
      * @param float $value
-     * @return TotalAmount
+     * @return ItemAmount
      */
-    public function setValue(float $value): TotalAmount
+    public function setValue(float $value): ItemAmount
     {
         $this->value = $value;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCurrency(): ?string
-    {
-        return $this->currency;
-    }
-
-    /**
-     * @param string $currency
-     * @return TotalAmount
-     */
-    public function setCurrency(string $currency): TotalAmount
-    {
-        $this->currency = $currency;
 
         return $this;
     }
@@ -69,9 +45,9 @@ class TotalAmount implements JsonSerializable
 
     /**
      * @param AmountDetail $details
-     * @return TotalAmount
+     * @return ItemAmount
      */
-    public function setDetails(AmountDetail $details): TotalAmount
+    public function setDetails(AmountDetail $details): ItemAmount
     {
         $this->details = $details;
 
@@ -89,8 +65,7 @@ class TotalAmount implements JsonSerializable
     {
         return [
             'value' => $this->getValue(),
-            'currency' => $this->getCurrency(),
-            'details' => $this->getDetails(),
+            'detail' => $this->getDetails(),
         ];
     }
 }
