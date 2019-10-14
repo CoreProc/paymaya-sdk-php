@@ -1,5 +1,7 @@
 <?php
 
+namespace CoreProc\PayMaya\Api;
+
 use CoreProc\PayMaya\Models\Customization;
 use CoreProc\PayMaya\PayMayaClient;
 
