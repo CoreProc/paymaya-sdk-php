@@ -2,6 +2,7 @@
 
 namespace CoreProc\PayMaya\Tests;
 
+use Exception;
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
@@ -22,7 +23,7 @@ class PayMayaClientTest extends TestCase
 
             $paymayaPublicClient = $this->generatePaymayaClient()->getClientWithPublicKey();
 
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $this->fail('PayMayaClient threw an exception.');
         }
 
@@ -38,7 +39,7 @@ class PayMayaClientTest extends TestCase
     {
         try {
             $paymayaSecretClient = $this->generatePaymayaClient('test')->getClientWithSecretKey();
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $this->assertTrue($exception->getMessage() === 'The defined PayMaya environment is invalid. Please choose' .
                 ' between production and sandbox.');
 
