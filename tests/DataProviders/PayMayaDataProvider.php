@@ -3,6 +3,7 @@
 namespace CoreProc\PayMaya\Tests\DataProviders;
 
 use CoreProc\PayMaya\PayMayaClient;
+use Exception;
 
 trait PayMayaDataProvider
 {
@@ -13,7 +14,7 @@ trait PayMayaDataProvider
     /**
      * @param string $environment
      * @return PayMayaClient
-     * @throws \Exception
+     * @throws Exception
      */
     protected function generatePaymayaClient($environment = PayMayaClient::ENVIRONMENT_SANDBOX)
     {
