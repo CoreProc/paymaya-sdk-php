@@ -40,7 +40,7 @@ class PayMayaClientTest extends TestCase
             $paymayaSecretClient = $this->generatePaymayaClient('test')->getClientWithSecretKey();
         } catch (\Exception $exception) {
             $this->assertTrue($exception->getMessage() === 'The defined PayMaya environment is invalid. Please choose' .
-                'between production and sandbox.');
+                ' between production and sandbox.');
 
             return;
         }
