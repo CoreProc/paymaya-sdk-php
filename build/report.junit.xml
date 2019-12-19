@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Spatie Test Suite" tests="8" assertions="12" errors="1" failures="1" skipped="0" time="2.518566">
+    <testsuite name="CoreProc\PayMaya\Tests\PayMayaClientTest" file="/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/PayMayaClientTest.php" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.047361">
+      <testcase name="testPayMayaClient" class="CoreProc\PayMaya\Tests\PayMayaClientTest" classname="CoreProc.PayMaya.Tests.PayMayaClientTest" file="/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/PayMayaClientTest.php" line="16" assertions="3" time="0.046381"/>
+      <testcase name="testPayMayaClientExceptionOnUnkownEnvironment" class="CoreProc\PayMaya\Tests\PayMayaClientTest" classname="CoreProc.PayMaya.Tests.PayMayaClientTest" file="/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/PayMayaClientTest.php" line="40" assertions="1" time="0.000980"/>
+    </testsuite>
+    <testsuite name="CoreProc\PayMaya\Tests\Vault\CardApiTest" file="/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/Vault/CardApiTest.php" tests="1" assertions="0" errors="0" failures="1" skipped="0" time="0.005999">
+      <testcase name="Warning" assertions="0" time="0.005999">
+        <warning type="PHPUnit\Framework\Warning">Warning
+No tests found in class "CoreProc\PayMaya\Tests\Vault\CardApiTest".
+
+</warning>
+      </testcase>
+    </testsuite>
+    <testsuite name="CoreProc\PayMaya\Tests\Vault\CustomerApiTest" file="/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/Vault/CustomerApiTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.029148">
+      <testcase name="testRegisterACustomer" class="CoreProc\PayMaya\Tests\Vault\CustomerApiTest" classname="CoreProc.PayMaya.Tests.Vault.CustomerApiTest" file="/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/Vault/CustomerApiTest.php" line="21" assertions="0" time="0.029148">
+        <error type="PHPUnit\Framework\Error\Warning">CoreProc\PayMaya\Tests\Vault\CustomerApiTest::testRegisterACustomer
+DateTime::modify(): Failed to parse time string (1987-07-28:0) at position 10 (:): Unexpected character
+
+/Users/chris/Repos/coreproc/paymaya-sdk-php/vendor/nesbot/carbon/src/Carbon/Traits/Modifiers.php:434
+/Users/chris/Repos/coreproc/paymaya-sdk-php/vendor/nesbot/carbon/src/Carbon/Traits/Date.php:1492
+/Users/chris/Repos/coreproc/paymaya-sdk-php/vendor/nesbot/carbon/src/Carbon/Traits/Creator.php:484
+/Users/chris/Repos/coreproc/paymaya-sdk-php/src/Models/Vault/Buyer.php:137
+/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/Vault/CustomerApiTest.php:29
+</error>
+      </testcase>
+    </testsuite>
+    <testsuite name="CoreProc\PayMaya\Tests\Vault\PaymentTokenApiTest" file="/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/Vault/PaymentTokenApiTest.php" tests="4" assertions="8" errors="0" failures="0" skipped="0" time="2.436058">
+      <testsuite name="CoreProc\PayMaya\Tests\Vault\PaymentTokenApiTest::testPaymentToken" tests="4" assertions="8" errors="0" failures="0" skipped="0" time="2.436058">
+        <testcase name="testPaymentToken with data set #0" class="CoreProc\PayMaya\Tests\Vault\PaymentTokenApiTest" classname="CoreProc.PayMaya.Tests.Vault.PaymentTokenApiTest" file="/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/Vault/PaymentTokenApiTest.php" line="24" assertions="2" time="0.666409"/>
+        <testcase name="testPaymentToken with data set #1" class="CoreProc\PayMaya\Tests\Vault\PaymentTokenApiTest" classname="CoreProc.PayMaya.Tests.Vault.PaymentTokenApiTest" file="/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/Vault/PaymentTokenApiTest.php" line="24" assertions="2" time="0.502667"/>
+        <testcase name="testPaymentToken with data set #2" class="CoreProc\PayMaya\Tests\Vault\PaymentTokenApiTest" classname="CoreProc.PayMaya.Tests.Vault.PaymentTokenApiTest" file="/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/Vault/PaymentTokenApiTest.php" line="24" assertions="2" time="0.554147"/>
+        <testcase name="testPaymentToken with data set #3" class="CoreProc\PayMaya\Tests\Vault\PaymentTokenApiTest" classname="CoreProc.PayMaya.Tests.Vault.PaymentTokenApiTest" file="/Users/chris/Repos/coreproc/paymaya-sdk-php/tests/Vault/PaymentTokenApiTest.php" line="24" assertions="2" time="0.712835"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
