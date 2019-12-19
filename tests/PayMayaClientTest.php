@@ -2,7 +2,6 @@
 
 namespace CoreProc\PayMaya\Tests;
 
-use CoreProc\PayMaya\Tests\DataProviders\PayMayaDataProvider;
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
@@ -28,9 +27,7 @@ class PayMayaClientTest extends TestCase
         }
 
         $this->assertTrue($paymayaPublicClient instanceof Client);
-
         $this->assertTrue($paymayaSecretClient instanceof Client);
-
         $this->assertArrayHasKey('Authorization', $paymayaPublicClient->getConfig()['headers']);
     }
 
@@ -42,7 +39,8 @@ class PayMayaClientTest extends TestCase
         try {
             $paymayaSecretClient = $this->generatePaymayaClient('test')->getClientWithSecretKey();
         } catch (\Exception $exception) {
-            $this->assertTrue($exception->getMessage() === 'The defined PayMaya environment is invalid. Please choose between production and sandbox.');
+            $this->assertTrue($exception->getMessage() === 'The defined PayMaya environment is invalid. Please choose' .
+                'between production and sandbox.');
 
             return;
         }

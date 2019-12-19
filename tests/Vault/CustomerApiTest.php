@@ -7,37 +7,40 @@ use CoreProc\PayMaya\Models\Address;
 use CoreProc\PayMaya\Models\Contact;
 use CoreProc\PayMaya\Models\Vault\Buyer;
 use CoreProc\PayMaya\PayMayaClient;
-use CoreProc\PayMaya\Tests\DataProviders\PayMayaDataProvider;
+use CoreProc\PayMaya\Tests\PayMayaDataProvider;
+use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
 use GuzzleHttp\Exception\ClientException;
 use PHPUnit\Framework\TestCase;
 
 class CustomerApiTest extends TestCase
 {
-    use PayMayaDataProvider;
+    use PayMayaDataProvider,
+        ArraySubsetAsserts;
 
     /**
      * @test
+     * @dataProvider buyerData
      */
-    public function testRegisterACustomer()
+    public function testRegisterACustomer($buyerData)
     {
         $customerApi = new CustomerApi($this->generatePaymayaClient());
 
         $buyer = (new Buyer())
-            ->setFirstName('John')
-            ->setMiddleName('Paul')
-            ->setLastName('Doe')
-            ->setBirthday('1987-07-28')
-            ->setSex('M')
+            ->setFirstName($buyerData['firstName'])
+            ->setMiddleName($buyerData['middleName'])
+            ->setLastName($buyerData['lastName'])
+            ->setBirthday($buyerData['birthday'])
+            ->setSex($buyerData['sex'])
             ->setContact((new Contact())
-                ->setPhone('+63(2)1234567890')
-                ->setEmail('john.paul.doe@payer.com'))
+                ->setPhone($buyerData['contact']['phone'])
+                ->setEmail($buyerData['contact']['email']))
             ->setBillingAddress((new Address())
-                ->setLine1('6F Launchpad')
-                ->setLine2('Sheridan Street')
-                ->setCity('Mandaluyong City')
-                ->setState('Metro Manila')
-                ->setZipCode('1552')
-                ->setCountryCode('PH'));
+                ->setLine1($buyerData['billingAddress']['line1'])
+                ->setLine2($buyerData['billingAddress']['line2'])
+                ->setCity($buyerData['billingAddress']['city'])
+                ->setState($buyerData['billingAddress']['state'])
+                ->setZipCode($buyerData['billingAddress']['zipCode'])
+                ->setCountryCode($buyerData['billingAddress']['countryCode']));
 
         $response = null;
 
@@ -47,14 +50,10 @@ class CustomerApiTest extends TestCase
             $this->fail('Payment Token API post call failed: ' . $exception->getResponse()->getBody());
         }
 
+        $data = PayMayaClient::getDataFromResponse($response, true);
+
         $this->assertEquals(200, $response->getStatusCode());
-
-        $data = PayMayaClient::getDataFromResponse($response);
-
-        $this->assertEquals('John', $data->firstName);
-
-        $this->assertNotEmpty($data->id);
-
-        $this->assertEquals($data->state, 'AVAILABLE');
+        $this->assertNotEmpty($data['id']);
+        $this->assertArraySubset($buyerData, $data);
     }
 }

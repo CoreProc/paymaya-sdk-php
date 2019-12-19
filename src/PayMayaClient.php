@@ -110,10 +110,11 @@ class PayMayaClient
 
     /**
      * @param ResponseInterface $response
-     * @return object
+     * @param bool $assoc [optional] When TRUE, returned objects will be converted into associative arrays.
+     * @return object|array
      */
-    public static function getDataFromResponse(ResponseInterface $response)
+    public static function getDataFromResponse(ResponseInterface $response, $assoc = false)
     {
-        return json_decode($response->getBody());
+        return json_decode($response->getBody(), $assoc);
     }
 }

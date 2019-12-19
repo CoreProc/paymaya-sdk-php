@@ -53,6 +53,8 @@ class Buyer implements JsonSerializable
     }
 
     /**
+     * Mandatory: No
+     *
      * @param string $firstName
      * @return Buyer
      */
@@ -115,7 +117,7 @@ class Buyer implements JsonSerializable
      */
     public function setSex(string $sex): self
     {
-        $this->sex = $sex;
+        $this->sex = strtoupper($sex);
 
         return $this;
     }
@@ -123,7 +125,7 @@ class Buyer implements JsonSerializable
     /**
      * @return Carbon
      */
-    public function getBirthday(): Carbon
+    public function getBirthday(): string
     {
         return $this->birthday;
     }
@@ -134,7 +136,7 @@ class Buyer implements JsonSerializable
      */
     public function setBirthday(string $birthday): self
     {
-        $this->birthday = Carbon::createFromTimeString($birthday)->format('Y-m-d');
+        $this->birthday = Carbon::createFromTimestamp(strtotime($birthday))->format('Y-m-d');
 
         return $this;
     }
@@ -183,11 +185,11 @@ class Buyer implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'first_name' => $this->getFirstName(),
-            'middle_name' => $this->getMiddleName(),
-            'last_name' => $this->getLastName(),
-            'sex' => $this->getSex(),
+            'firstName' => $this->getFirstName(),
+            'middleName' => $this->getMiddleName(),
+            'lastName' => $this->getLastName(),
             'birthday' => $this->getBirthday(),
+            'sex' => $this->getSex(),
             'contact' => $this->getContact(),
             'billingAddress' => $this->getBillingAddress(),
         ];

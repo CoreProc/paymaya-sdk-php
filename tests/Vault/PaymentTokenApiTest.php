@@ -5,7 +5,8 @@ namespace CoreProc\PayMaya\Tests\Vault;
 use CoreProc\PayMaya\Api\Vault\PaymentTokenApi;
 use CoreProc\PayMaya\Models\Vault\Card;
 use CoreProc\PayMaya\PayMayaClient;
-use CoreProc\PayMaya\Tests\DataProviders\PayMayaDataProvider;
+use CoreProc\PayMaya\Tests\PayMayaDataProvider;
+use Exception;
 use GuzzleHttp\Exception\ClientException;
 use PHPUnit\Framework\TestCase;
 
@@ -15,21 +16,19 @@ class PaymentTokenApiTest extends TestCase
 
     /**
      * @test
-     * @dataProvider dataCards
-     * @param $number
-     * @param $expMonth
-     * @param $expYear
-     * @param $cvc
+     * @dataProvider cardData
+     * @param $card
+     * @throws Exception
      */
-    public function testPaymentToken($number, $expMonth, $expYear, $cvc)
+    public function testPaymentToken($card)
     {
         $paymentTokenApi = new PaymentTokenApi($this->generatePaymayaClient());
 
         $card = (new Card)
-            ->setNumber($number)
-            ->setExpMonth($expMonth)
-            ->setExpYear($expYear)
-            ->setCvc($cvc);
+            ->setNumber($card['number'])
+            ->setExpMonth($card['expMonth'])
+            ->setExpYear($card['expYear'])
+            ->setCvc($card['cvc']);
 
         $response = null;
 
@@ -42,7 +41,6 @@ class PaymentTokenApiTest extends TestCase
         $data = PayMayaClient::getDataFromResponse($response);
 
         $this->assertNotEmpty($data->paymentTokenId);
-
         $this->assertEquals($data->state, 'AVAILABLE');
     }
 }
