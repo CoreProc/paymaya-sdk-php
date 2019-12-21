@@ -2,10 +2,10 @@
 
 namespace CoreProc\PayMaya\Tests\Vault;
 
-use CoreProc\PayMaya\Api\Vault\CustomerApi;
-use CoreProc\PayMaya\Models\Address;
-use CoreProc\PayMaya\Models\Contact;
-use CoreProc\PayMaya\Models\Vault\Buyer;
+use CoreProc\PayMaya\Clients\Vault\CustomerClient;
+use CoreProc\PayMaya\Requests\Address;
+use CoreProc\PayMaya\Requests\Contact;
+use CoreProc\PayMaya\Requests\Vault\Buyer;
 use CoreProc\PayMaya\PayMayaClient;
 use CoreProc\PayMaya\Tests\PayMayaDataProvider;
 use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
@@ -23,7 +23,7 @@ class CustomerApiTest extends TestCase
      */
     public function testRegisterACustomer($buyerData)
     {
-        $customerApi = new CustomerApi($this->generatePaymayaClient());
+        $customerApi = new CustomerClient($this->generatePaymayaClient());
 
         $buyer = (new Buyer())
             ->setFirstName($buyerData['firstName'])

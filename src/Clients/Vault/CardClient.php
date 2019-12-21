@@ -1,13 +1,13 @@
 <?php
 
-namespace CoreProc\PayMaya\Api\Vault;
+namespace CoreProc\PayMaya\Clients\Vault;
 
-use CoreProc\PayMaya\Api\PaymayaApi;
-use CoreProc\PayMaya\Models\RedirectUrl;
+use CoreProc\PayMaya\Clients\Client;
+use CoreProc\PayMaya\Requests\RedirectUrl;
 use GuzzleHttp\Exception\ClientException;
 use Psr\Http\Message\ResponseInterface;
 
-class CardApi extends PaymayaApi
+class CardClient extends Client
 {
     /**
      * @param string $customerId

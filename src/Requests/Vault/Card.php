@@ -1,6 +1,6 @@
 <?php
 
-namespace CoreProc\PayMaya\Models\Vault;
+namespace CoreProc\PayMaya\Requests\Vault;
 
 use JsonSerializable;
 

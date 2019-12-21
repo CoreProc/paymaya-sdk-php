@@ -1,6 +1,6 @@
 <?php
 
-namespace CoreProc\PayMaya\Models;
+namespace CoreProc\PayMaya\Requests;
 
 use JsonSerializable;
 

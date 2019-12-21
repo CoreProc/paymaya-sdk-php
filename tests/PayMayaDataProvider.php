@@ -2,12 +2,12 @@
 
 namespace CoreProc\PayMaya\Tests;
 
-use CoreProc\PayMaya\Api\Vault\CustomerApi;
-use CoreProc\PayMaya\Api\Vault\PaymentTokenApi;
-use CoreProc\PayMaya\Models\Address;
-use CoreProc\PayMaya\Models\Contact;
-use CoreProc\PayMaya\Models\Vault\Buyer;
-use CoreProc\PayMaya\Models\Vault\Card;
+use CoreProc\PayMaya\Clients\Vault\CustomerClient;
+use CoreProc\PayMaya\Clients\Vault\PaymentTokenClient;
+use CoreProc\PayMaya\Requests\Address;
+use CoreProc\PayMaya\Requests\Contact;
+use CoreProc\PayMaya\Requests\Vault\Buyer;
+use CoreProc\PayMaya\Requests\Vault\Card;
 use CoreProc\PayMaya\PayMayaClient;
 use Exception;
 use GuzzleHttp\Exception\ClientException;
@@ -75,7 +75,7 @@ trait PayMayaDataProvider
 
     private function generatePaymentToken($card)
     {
-        $paymentTokenApi = new PaymentTokenApi($this->generatePaymayaClient());
+        $paymentTokenApi = new PaymentTokenClient($this->generatePaymayaClient());
 
         $card = (new Card)
             ->setNumber($card['number'])
@@ -98,7 +98,7 @@ trait PayMayaDataProvider
     {
         $buyerData = $this->buyerData()[0][0];
 
-        $customerApi = new CustomerApi($this->generatePaymayaClient());
+        $customerApi = new CustomerClient($this->generatePaymayaClient());
 
         $buyer = (new Buyer())
             ->setFirstName($buyerData['firstName'])

@@ -2,8 +2,8 @@
 
 namespace CoreProc\PayMaya\Tests\Vault;
 
-use CoreProc\PayMaya\Api\Vault\CardApi;
-use CoreProc\PayMaya\Models\RedirectUrl;
+use CoreProc\PayMaya\Clients\Vault\CardClient;
+use CoreProc\PayMaya\Requests\RedirectUrl;
 use CoreProc\PayMaya\PayMayaClient;
 use CoreProc\PayMaya\Tests\PayMayaDataProvider;
 use Exception;
@@ -28,7 +28,7 @@ class CardApiTest extends TestCase
             ->setFailure('https://example.com/failure')
             ->setSuccess('https://example.com/cancel');
 
-        $cardApi = new CardApi($this->generatePaymayaClient());
+        $cardApi = new CardClient($this->generatePaymayaClient());
 
         $cardPostResponse = $cardApi->post($customerData->id, $paymentTokenData->paymentTokenId, $redirectUrls);
         $cardPostData = PayMayaClient::getDataFromResponse($cardPostResponse, true);

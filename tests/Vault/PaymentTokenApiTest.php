@@ -2,8 +2,8 @@
 
 namespace CoreProc\PayMaya\Tests\Vault;
 
-use CoreProc\PayMaya\Api\Vault\PaymentTokenApi;
-use CoreProc\PayMaya\Models\Vault\Card;
+use CoreProc\PayMaya\Clients\Vault\PaymentTokenClient;
+use CoreProc\PayMaya\Requests\Vault\Card;
 use CoreProc\PayMaya\PayMayaClient;
 use CoreProc\PayMaya\Tests\PayMayaDataProvider;
 use Exception;
@@ -22,7 +22,7 @@ class PaymentTokenApiTest extends TestCase
      */
     public function testPaymentToken($card)
     {
-        $paymentTokenApi = new PaymentTokenApi($this->generatePaymayaClient());
+        $paymentTokenApi = new PaymentTokenClient($this->generatePaymayaClient());
 
         $card = (new Card)
             ->setNumber($card['number'])

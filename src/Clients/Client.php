@@ -1,10 +1,10 @@
 <?php
 
-namespace CoreProc\PayMaya\Api;
+namespace CoreProc\PayMaya\Clients;
 
 use CoreProc\PayMaya\PayMayaClient;
 
-abstract class PaymayaApi
+abstract class Client
 {
     /**
      * @var PayMayaClient

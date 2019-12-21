@@ -1,10 +1,10 @@
 <?php
 
-namespace CoreProc\PayMaya\Models\Vault;
+namespace CoreProc\PayMaya\Requests\Vault;
 
 use Carbon\Carbon;
-use CoreProc\PayMaya\Models\Address;
-use CoreProc\PayMaya\Models\Contact;
+use CoreProc\PayMaya\Requests\Address;
+use CoreProc\PayMaya\Requests\Contact;
 use JsonSerializable;
 
 class Buyer implements JsonSerializable

@@ -1,13 +1,13 @@
 <?php
 
-namespace CoreProc\PayMaya\Api\Checkout;
+namespace CoreProc\PayMaya\Clients\Checkout;
 
-use CoreProc\PayMaya\Api\PaymayaApi;
-use CoreProc\PayMaya\Models\Checkout\Checkout;
+use CoreProc\PayMaya\Clients\Client;
+use CoreProc\PayMaya\Requests\Checkout\Checkout;
 use GuzzleHttp\Exception\ClientException;
 use Psr\Http\Message\ResponseInterface;
 
-class CheckoutApi extends PaymayaApi
+class CheckoutClient extends Client
 {
     /**
      * @param Checkout $checkout

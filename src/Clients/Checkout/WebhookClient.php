@@ -1,11 +1,11 @@
 <?php
 
-namespace CoreProc\PayMaya\Api\Checkout;
+namespace CoreProc\PayMaya\Clients\Checkout;
 
-use CoreProc\PayMaya\Api\PaymayaApi;
-use CoreProc\PayMaya\Models\Checkout\Webhook;
+use CoreProc\PayMaya\Clients\Client;
+use CoreProc\PayMaya\Requests\Checkout\Webhook;
 
-class WebhookApi extends PaymayaApi
+class WebhookClient extends Client
 {
     public function post(Webhook $webhook)
     {

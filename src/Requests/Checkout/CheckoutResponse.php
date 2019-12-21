@@ -1,6 +1,6 @@
 <?php
 
-namespace CoreProc\PayMaya\Models\Checkout;
+namespace CoreProc\PayMaya\Requests\Checkout;
 
 class CheckoutResponse
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace CoreProc\PayMaya\Api\Vault;
+namespace CoreProc\PayMaya\Clients\Vault;
 
-use CoreProc\PayMaya\Api\PaymayaApi;
-use CoreProc\PayMaya\Models\Vault\Card;
+use CoreProc\PayMaya\Clients\Client;
+use CoreProc\PayMaya\Requests\Vault\Card;
 use GuzzleHttp\Exception\ClientException;
 use Psr\Http\Message\ResponseInterface;
 
-class PaymentTokenApi extends PaymayaApi
+class PaymentTokenClient extends Client
 {
     /**
      * @param Card $card
