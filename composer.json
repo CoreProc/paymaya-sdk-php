@@ -17,7 +17,10 @@
     ],
     "require": {
         "php": "^7.2",
-        "guzzlehttp/guzzle": "~6.0"
+        "ext-json": "*",
+        "dms/phpunit-arraysubset-asserts": "^0.1.0",
+        "guzzlehttp/guzzle": "~6.0",
+        "nesbot/carbon": "^2.0"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.3",

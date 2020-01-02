@@ -1,23 +1,13 @@
 <?php
 
-namespace CoreProc\PayMaya\Api;
+namespace CoreProc\PayMaya\Clients\Checkout;
 
-use CoreProc\PayMaya\Models\Webhook;
-use CoreProc\PayMaya\PayMayaClient;
+use CoreProc\PayMaya\Clients\Client;
+use CoreProc\PayMaya\Requests\Checkout\Webhook;
 
-class WebhookApi
+class WebhookClient extends Client
 {
-    /**
-     * @var PayMayaClient
-     */
-    protected $payMayaClient;
-
-    public function __construct(PayMayaClient $payMayaClient)
-    {
-        $this->payMayaClient = $payMayaClient;
-    }
-
-    public function store(Webhook $webhook)
+    public function post(Webhook $webhook)
     {
         $response = $this->payMayaClient->getClientWithSecretKey()->post('/checkout/v1/webhooks', [
             'json' => $webhook,
@@ -26,14 +16,14 @@ class WebhookApi
         return json_decode($response->getBody()->getContents());
     }
 
-    public function show()
+    public function get()
     {
         $response = $this->payMayaClient->getClientWithSecretKey()->get('/checkout/v1/webhooks');
 
         return json_decode($response->getBody()->getContents());
     }
 
-    public function update(Webhook $webhook)
+    public function put(Webhook $webhook)
     {
         $response = $this->payMayaClient->getClientWithSecretKey()->put('/checkout/v1/webhooks/' . $webhook->getId(), [
             'json' => $webhook,

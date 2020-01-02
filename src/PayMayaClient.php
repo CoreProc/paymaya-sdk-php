@@ -4,6 +4,7 @@ namespace CoreProc\PayMaya;
 
 use Exception;
 use GuzzleHttp\Client;
+use Psr\Http\Message\ResponseInterface;
 
 class PayMayaClient
 {
@@ -64,7 +65,8 @@ class PayMayaClient
                 $this->baseUrl = self::BASE_URL_SANDBOX;
                 break;
             default:
-                throw new Exception('The defined PayMaya environment is invalid. Please choose between production and sandbox.');
+                throw new Exception('The defined PayMaya environment is invalid. Please choose between production ' .
+                    'and sandbox.');
         }
 
         $this->environment = $environment;
@@ -104,5 +106,15 @@ class PayMayaClient
                 'Authorization' => $this->getPublicAuthKey(),
             ],
         ]);
+    }
+
+    /**
+     * @param ResponseInterface $response
+     * @param bool $assoc [optional] When TRUE, returned objects will be converted into associative arrays.
+     * @return object|array
+     */
+    public static function getDataFromResponse(ResponseInterface $response, $assoc = false)
+    {
+        return json_decode($response->getBody(), $assoc);
     }
 }
