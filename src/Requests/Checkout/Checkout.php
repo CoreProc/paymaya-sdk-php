@@ -2,6 +2,7 @@
 
 namespace CoreProc\PayMaya\Requests\Checkout;
 
+use CoreProc\PayMaya\Models\RedirectUrl;
 use JsonSerializable;
 
 class Checkout implements JsonSerializable
@@ -12,7 +13,7 @@ class Checkout implements JsonSerializable
     protected $id;
 
     /**
-     * @var Buyer
+     * @var Buyer|null
      */
     protected $buyer;
 
@@ -32,35 +33,46 @@ class Checkout implements JsonSerializable
     protected $requestReferenceNumber;
 
     /**
-     * @var RedirectUrl
+     * @var RedirectUrl|null
      */
     protected $redirectUrl;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $status;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $paymentStatus;
 
     /**
-     * @var object
+     * @var object|null
      */
     protected $metadata;
 
     /**
      * @return string
      */
-    public function getId(): ?string
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @return Buyer
+     * @param string $id
+     * @return Checkout
+     */
+    public function setId(string $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return Buyer|null
      */
     public function getBuyer(): ?Buyer
     {
@@ -68,10 +80,10 @@ class Checkout implements JsonSerializable
     }
 
     /**
-     * @param Buyer $buyer
+     * @param Buyer|null $buyer
      * @return Checkout
      */
-    public function setBuyer(Buyer $buyer): Checkout
+    public function setBuyer(?Buyer $buyer): self
     {
         $this->buyer = $buyer;
 
@@ -81,7 +93,7 @@ class Checkout implements JsonSerializable
     /**
      * @return array
      */
-    public function getItems(): ?array
+    public function getItems(): array
     {
         return $this->items;
     }
@@ -90,7 +102,7 @@ class Checkout implements JsonSerializable
      * @param array $items
      * @return Checkout
      */
-    public function setItems(array $items): Checkout
+    public function setItems(array $items): self
     {
         $this->items = $items;
 
@@ -100,7 +112,7 @@ class Checkout implements JsonSerializable
     /**
      * @return TotalAmount
      */
-    public function getTotalAmount(): ?TotalAmount
+    public function getTotalAmount(): TotalAmount
     {
         return $this->totalAmount;
     }
@@ -109,7 +121,7 @@ class Checkout implements JsonSerializable
      * @param TotalAmount $totalAmount
      * @return Checkout
      */
-    public function setTotalAmount(TotalAmount $totalAmount): Checkout
+    public function setTotalAmount(TotalAmount $totalAmount): self
     {
         $this->totalAmount = $totalAmount;
 
@@ -119,7 +131,7 @@ class Checkout implements JsonSerializable
     /**
      * @return string
      */
-    public function getRequestReferenceNumber(): ?string
+    public function getRequestReferenceNumber(): string
     {
         return $this->requestReferenceNumber;
     }
@@ -128,7 +140,7 @@ class Checkout implements JsonSerializable
      * @param string $requestReferenceNumber
      * @return Checkout
      */
-    public function setRequestReferenceNumber(string $requestReferenceNumber): Checkout
+    public function setRequestReferenceNumber(string $requestReferenceNumber): self
     {
         $this->requestReferenceNumber = $requestReferenceNumber;
 
@@ -136,7 +148,7 @@ class Checkout implements JsonSerializable
     }
 
     /**
-     * @return RedirectUrl
+     * @return RedirectUrl|null
      */
     public function getRedirectUrl(): ?RedirectUrl
     {
@@ -144,10 +156,10 @@ class Checkout implements JsonSerializable
     }
 
     /**
-     * @param RedirectUrl $redirectUrl
+     * @param RedirectUrl|null $redirectUrl
      * @return Checkout
      */
-    public function setRedirectUrl(RedirectUrl $redirectUrl): Checkout
+    public function setRedirectUrl(?RedirectUrl $redirectUrl): self
     {
         $this->redirectUrl = $redirectUrl;
 
@@ -155,7 +167,7 @@ class Checkout implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStatus(): ?string
     {
@@ -163,7 +175,18 @@ class Checkout implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @param string|null $status
+     * @return Checkout
+     */
+    public function setStatus(?string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
      */
     public function getPaymentStatus(): ?string
     {
@@ -171,18 +194,29 @@ class Checkout implements JsonSerializable
     }
 
     /**
-     * @return object
+     * @param string|null $paymentStatus
+     * @return Checkout
      */
-    public function getMetadata()
+    public function setPaymentStatus(?string $paymentStatus): self
+    {
+        $this->paymentStatus = $paymentStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return object|null
+     */
+    public function getMetadata(): ?object
     {
         return $this->metadata;
     }
 
     /**
-     * @param object $metadata
+     * @param object|null $metadata
      * @return Checkout
      */
-    public function setMetadata($metadata): Checkout
+    public function setMetadata(?object $metadata): self
     {
         $this->metadata = $metadata;
 

@@ -2,47 +2,49 @@
 
 namespace CoreProc\PayMaya\Requests\Checkout;
 
+use CoreProc\PayMaya\Models\Address;
+use CoreProc\PayMaya\Models\Contact;
 use JsonSerializable;
 
 class Buyer implements JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $firstName;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $middleName;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $lastName;
 
     /**
-     * @var Contact
+     * @var Contact|null
      */
     protected $contact;
 
     /**
-     * @var Address
+     * @var Address|null
      */
     protected $shippingAddress;
 
     /**
-     * @var Address
+     * @var Address|null
      */
     protected $billingAddress;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $ipAddress;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFirstName(): ?string
     {
@@ -50,10 +52,10 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @param string $firstName
+     * @param string|null $firstName
      * @return Buyer
      */
-    public function setFirstName(string $firstName): Buyer
+    public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
 
@@ -61,7 +63,7 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMiddleName(): ?string
     {
@@ -69,10 +71,10 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @param string $middleName
+     * @param string|null $middleName
      * @return Buyer
      */
-    public function setMiddleName(string $middleName): Buyer
+    public function setMiddleName(?string $middleName): self
     {
         $this->middleName = $middleName;
 
@@ -80,7 +82,7 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLastName(): ?string
     {
@@ -88,10 +90,10 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @param string $lastName
+     * @param string|null $lastName
      * @return Buyer
      */
-    public function setLastName(string $lastName): Buyer
+    public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
 
@@ -99,7 +101,7 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @return Contact
+     * @return Contact|null
      */
     public function getContact(): ?Contact
     {
@@ -107,10 +109,10 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @param Contact $contact
+     * @param Contact|null $contact
      * @return Buyer
      */
-    public function setContact(Contact $contact): Buyer
+    public function setContact(?Contact $contact): self
     {
         $this->contact = $contact;
 
@@ -118,7 +120,7 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @return Address
+     * @return Address|null
      */
     public function getShippingAddress(): ?Address
     {
@@ -126,10 +128,10 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @param Address $shippingAddress
+     * @param Address|null $shippingAddress
      * @return Buyer
      */
-    public function setShippingAddress(Address $shippingAddress): Buyer
+    public function setShippingAddress(?Address $shippingAddress): self
     {
         $this->shippingAddress = $shippingAddress;
 
@@ -137,7 +139,7 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @return Address
+     * @return Address|null
      */
     public function getBillingAddress(): ?Address
     {
@@ -145,10 +147,10 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @param Address $billingAddress
+     * @param Address|null $billingAddress
      * @return Buyer
      */
-    public function setBillingAddress(Address $billingAddress): Buyer
+    public function setBillingAddress(?Address $billingAddress): self
     {
         $this->billingAddress = $billingAddress;
 
@@ -156,7 +158,7 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getIpAddress(): ?string
     {
@@ -164,10 +166,10 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @param string $ipAddress
+     * @param string|null $ipAddress
      * @return Buyer
      */
-    public function setIpAddress(string $ipAddress): Buyer
+    public function setIpAddress(?string $ipAddress): self
     {
         $this->ipAddress = $ipAddress;
 

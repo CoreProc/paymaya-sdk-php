@@ -7,22 +7,22 @@ use JsonSerializable;
 class RedirectUrl implements JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $success;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $failure;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $cancel;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSuccess(): ?string
     {
@@ -30,10 +30,10 @@ class RedirectUrl implements JsonSerializable
     }
 
     /**
-     * @param string $success
+     * @param string|null $success
      * @return RedirectUrl
      */
-    public function setSuccess(string $success): RedirectUrl
+    public function setSuccess(?string $success): self
     {
         $this->success = $success;
 
@@ -41,7 +41,7 @@ class RedirectUrl implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFailure(): ?string
     {
@@ -49,10 +49,10 @@ class RedirectUrl implements JsonSerializable
     }
 
     /**
-     * @param string $failure
+     * @param string|null $failure
      * @return RedirectUrl
      */
-    public function setFailure(string $failure): RedirectUrl
+    public function setFailure(?string $failure): self
     {
         $this->failure = $failure;
 
@@ -60,7 +60,7 @@ class RedirectUrl implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCancel(): ?string
     {
@@ -68,10 +68,10 @@ class RedirectUrl implements JsonSerializable
     }
 
     /**
-     * @param string $cancel
+     * @param string|null $cancel
      * @return RedirectUrl
      */
-    public function setCancel(string $cancel): RedirectUrl
+    public function setCancel(?string $cancel): self
     {
         $this->cancel = $cancel;
 

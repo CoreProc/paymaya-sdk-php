@@ -2,7 +2,6 @@
 
 namespace CoreProc\PayMaya\Requests\Vault;
 
-use Carbon\Carbon;
 use CoreProc\PayMaya\Requests\Address;
 use CoreProc\PayMaya\Requests\Contact;
 use JsonSerializable;
@@ -10,55 +9,53 @@ use JsonSerializable;
 class Buyer implements JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $firstName;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $middleName;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $lastName;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $sex;
 
     /**
-     * @var Carbon
+     * @var string|null
      */
     protected $birthday;
 
     /**
-     * @var Contact
+     * @var Contact|null
      */
     protected $contact;
 
     /**
-     * @var Address
+     * @var Address|null
      */
     protected $billingAddress;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFirstName(): string
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     /**
-     * Mandatory: No
-     *
-     * @param string $firstName
+     * @param string|null $firstName
      * @return Buyer
      */
-    public function setFirstName(string $firstName): self
+    public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
 
@@ -66,18 +63,18 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMiddleName(): string
+    public function getMiddleName(): ?string
     {
         return $this->middleName;
     }
 
     /**
-     * @param string $middleName
+     * @param string|null $middleName
      * @return Buyer
      */
-    public function setMiddleName(string $middleName): self
+    public function setMiddleName(?string $middleName): self
     {
         $this->middleName = $middleName;
 
@@ -85,18 +82,18 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastName(): string
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     /**
-     * @param string $lastName
+     * @param string|null $lastName
      * @return Buyer
      */
-    public function setLastName(string $lastName): self
+    public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
 
@@ -104,56 +101,56 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSex(): string
+    public function getSex(): ?string
     {
         return $this->sex;
     }
 
     /**
-     * @param string $sex
+     * @param string|null $sex
      * @return Buyer
      */
-    public function setSex(string $sex): self
+    public function setSex(?string $sex): self
     {
-        $this->sex = strtoupper($sex);
+        $this->sex = $sex;
 
         return $this;
     }
 
     /**
-     * @return Carbon
+     * @return string|null
      */
-    public function getBirthday(): string
+    public function getBirthday(): ?string
     {
         return $this->birthday;
     }
 
     /**
-     * @param string $birthday
+     * @param string|null $birthday
      * @return Buyer
      */
-    public function setBirthday(string $birthday): self
+    public function setBirthday(?string $birthday): self
     {
-        $this->birthday = Carbon::createFromTimestamp(strtotime($birthday))->format('Y-m-d');
+        $this->birthday = $birthday;
 
         return $this;
     }
 
     /**
-     * @return Contact
+     * @return Contact|null
      */
-    public function getContact(): Contact
+    public function getContact(): ?Contact
     {
         return $this->contact;
     }
 
     /**
-     * @param Contact $contact
+     * @param Contact|null $contact
      * @return Buyer
      */
-    public function setContact(Contact $contact): self
+    public function setContact(?Contact $contact): self
     {
         $this->contact = $contact;
 
@@ -161,18 +158,18 @@ class Buyer implements JsonSerializable
     }
 
     /**
-     * @return Address
+     * @return Address|null
      */
-    public function getBillingAddress(): Address
+    public function getBillingAddress(): ?Address
     {
         return $this->billingAddress;
     }
 
     /**
-     * @param Address $billingAddress
+     * @param Address|null $billingAddress
      * @return Buyer
      */
-    public function setBillingAddress(Address $billingAddress): self
+    public function setBillingAddress(?Address $billingAddress): self
     {
         $this->billingAddress = $billingAddress;
 

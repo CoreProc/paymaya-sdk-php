@@ -12,22 +12,22 @@ class Item implements JsonSerializable
     protected $name;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $code;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
 
     /**
-     * @var integer
+     * @var integer|null
      */
     protected $quantity;
 
     /**
-     * @var ItemAmount
+     * @var ItemAmount|null
      */
     protected $amount;
 
@@ -39,7 +39,7 @@ class Item implements JsonSerializable
     /**
      * @return string
      */
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -48,7 +48,7 @@ class Item implements JsonSerializable
      * @param string $name
      * @return Item
      */
-    public function setName(string $name): Item
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -56,7 +56,7 @@ class Item implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCode(): ?string
     {
@@ -64,10 +64,10 @@ class Item implements JsonSerializable
     }
 
     /**
-     * @param string $code
+     * @param string|null $code
      * @return Item
      */
-    public function setCode(string $code): Item
+    public function setCode(?string $code): self
     {
         $this->code = $code;
 
@@ -75,7 +75,7 @@ class Item implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -83,10 +83,10 @@ class Item implements JsonSerializable
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      * @return Item
      */
-    public function setDescription(string $description): Item
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -94,7 +94,7 @@ class Item implements JsonSerializable
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getQuantity(): ?int
     {
@@ -102,10 +102,10 @@ class Item implements JsonSerializable
     }
 
     /**
-     * @param int $quantity
+     * @param int|null $quantity
      * @return Item
      */
-    public function setQuantity(int $quantity): Item
+    public function setQuantity(?int $quantity): self
     {
         $this->quantity = $quantity;
 
@@ -113,7 +113,7 @@ class Item implements JsonSerializable
     }
 
     /**
-     * @return ItemAmount
+     * @return ItemAmount|null
      */
     public function getAmount(): ?ItemAmount
     {
@@ -121,10 +121,10 @@ class Item implements JsonSerializable
     }
 
     /**
-     * @param ItemAmount $amount
+     * @param ItemAmount|null $amount
      * @return Item
      */
-    public function setAmount(ItemAmount $amount): Item
+    public function setAmount(?ItemAmount $amount): self
     {
         $this->amount = $amount;
 
@@ -134,7 +134,7 @@ class Item implements JsonSerializable
     /**
      * @return TotalAmount
      */
-    public function getTotalAmount(): ?TotalAmount
+    public function getTotalAmount(): TotalAmount
     {
         return $this->totalAmount;
     }
@@ -143,7 +143,7 @@ class Item implements JsonSerializable
      * @param TotalAmount $totalAmount
      * @return Item
      */
-    public function setTotalAmount(TotalAmount $totalAmount): Item
+    public function setTotalAmount(TotalAmount $totalAmount): self
     {
         $this->totalAmount = $totalAmount;
 

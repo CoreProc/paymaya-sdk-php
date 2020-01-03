@@ -7,17 +7,17 @@ use JsonSerializable;
 class Contact implements JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $phone;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $email;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPhone(): ?string
     {
@@ -25,10 +25,10 @@ class Contact implements JsonSerializable
     }
 
     /**
-     * @param string $phone
+     * @param string|null $phone
      * @return Contact
      */
-    public function setPhone(string $phone): Contact
+    public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
 
@@ -36,7 +36,7 @@ class Contact implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -44,10 +44,10 @@ class Contact implements JsonSerializable
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      * @return Contact
      */
-    public function setEmail(string $email): Contact
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 

@@ -12,7 +12,7 @@ class TotalAmount implements JsonSerializable
     protected $amount;
 
     /**
-     * @var float
+     * @var float|null
      */
     protected $value;
 
@@ -22,7 +22,7 @@ class TotalAmount implements JsonSerializable
     protected $currency;
 
     /**
-     * @var AmountDetail
+     * @var AmountDetail|null
      */
     protected $details;
 
@@ -38,7 +38,7 @@ class TotalAmount implements JsonSerializable
      * @param float $amount
      * @return TotalAmount
      */
-    public function setAmount(float $amount): TotalAmount
+    public function setAmount(float $amount): self
     {
         $this->amount = $amount;
 
@@ -46,7 +46,7 @@ class TotalAmount implements JsonSerializable
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getValue(): ?float
     {
@@ -54,10 +54,10 @@ class TotalAmount implements JsonSerializable
     }
 
     /**
-     * @param float $value
+     * @param float|null $value
      * @return TotalAmount
      */
-    public function setValue(float $value): TotalAmount
+    public function setValue(?float $value): self
     {
         $this->value = $value;
 
@@ -67,7 +67,7 @@ class TotalAmount implements JsonSerializable
     /**
      * @return string
      */
-    public function getCurrency(): ?string
+    public function getCurrency(): string
     {
         return $this->currency;
     }
@@ -76,7 +76,7 @@ class TotalAmount implements JsonSerializable
      * @param string $currency
      * @return TotalAmount
      */
-    public function setCurrency(string $currency): TotalAmount
+    public function setCurrency(string $currency): self
     {
         $this->currency = $currency;
 
@@ -84,7 +84,7 @@ class TotalAmount implements JsonSerializable
     }
 
     /**
-     * @return AmountDetail
+     * @return AmountDetail|null
      */
     public function getDetails(): ?AmountDetail
     {
@@ -92,10 +92,10 @@ class TotalAmount implements JsonSerializable
     }
 
     /**
-     * @param AmountDetail $details
+     * @param AmountDetail|null $details
      * @return TotalAmount
      */
-    public function setDetails(AmountDetail $details): TotalAmount
+    public function setDetails(?AmountDetail $details): self
     {
         $this->details = $details;
 

@@ -12,14 +12,14 @@ class ItemAmount implements JsonSerializable
     protected $value;
 
     /**
-     * @var AmountDetail
+     * @var AmountDetail|null
      */
     protected $details;
 
     /**
      * @return float
      */
-    public function getValue(): ?float
+    public function getValue(): float
     {
         return $this->value;
     }
@@ -28,7 +28,7 @@ class ItemAmount implements JsonSerializable
      * @param float $value
      * @return ItemAmount
      */
-    public function setValue(float $value): ItemAmount
+    public function setValue(float $value): self
     {
         $this->value = $value;
 
@@ -36,7 +36,7 @@ class ItemAmount implements JsonSerializable
     }
 
     /**
-     * @return AmountDetail
+     * @return AmountDetail|null
      */
     public function getDetails(): ?AmountDetail
     {
@@ -44,10 +44,10 @@ class ItemAmount implements JsonSerializable
     }
 
     /**
-     * @param AmountDetail $details
+     * @param AmountDetail|null $details
      * @return ItemAmount
      */
-    public function setDetails(AmountDetail $details): ItemAmount
+    public function setDetails(?AmountDetail $details): self
     {
         $this->details = $details;
 

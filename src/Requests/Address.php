@@ -7,37 +7,37 @@ use JsonSerializable;
 class Address implements JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $line1;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $line2;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $city;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $state;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $zipCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $countryCode;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLine1(): ?string
     {
@@ -45,10 +45,10 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @param string $line1
+     * @param string|null $line1
      * @return Address
      */
-    public function setLine1(string $line1): Address
+    public function setLine1(?string $line1): self
     {
         $this->line1 = $line1;
 
@@ -56,7 +56,7 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLine2(): ?string
     {
@@ -64,10 +64,10 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @param string $line2
+     * @param string|null $line2
      * @return Address
      */
-    public function setLine2(string $line2): Address
+    public function setLine2(?string $line2): self
     {
         $this->line2 = $line2;
 
@@ -75,7 +75,7 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCity(): ?string
     {
@@ -83,10 +83,10 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @param string $city
+     * @param string|null $city
      * @return Address
      */
-    public function setCity(string $city): Address
+    public function setCity(?string $city): self
     {
         $this->city = $city;
 
@@ -94,7 +94,7 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getState(): ?string
     {
@@ -102,10 +102,10 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @param string $state
+     * @param string|null $state
      * @return Address
      */
-    public function setState(string $state): Address
+    public function setState(?string $state): self
     {
         $this->state = $state;
 
@@ -113,7 +113,7 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getZipCode(): ?string
     {
@@ -121,10 +121,10 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @param string $zipCode
+     * @param string|null $zipCode
      * @return Address
      */
-    public function setZipCode(string $zipCode): Address
+    public function setZipCode(?string $zipCode): self
     {
         $this->zipCode = $zipCode;
 
@@ -132,7 +132,7 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCountryCode(): ?string
     {
@@ -140,10 +140,10 @@ class Address implements JsonSerializable
     }
 
     /**
-     * @param string $countryCode
+     * @param string|null $countryCode
      * @return Address
      */
-    public function setCountryCode(string $countryCode): Address
+    public function setCountryCode(?string $countryCode): self
     {
         $this->countryCode = $countryCode;
 

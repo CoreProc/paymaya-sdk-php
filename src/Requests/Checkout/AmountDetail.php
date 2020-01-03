@@ -7,32 +7,32 @@ use JsonSerializable;
 class AmountDetail implements JsonSerializable
 {
     /**
-     * @var float
+     * @var float|null
      */
     protected $discount;
 
     /**
-     * @var float
+     * @var float|null
      */
     protected $serviceCharge;
 
     /**
-     * @var float
+     * @var float|null
      */
     protected $shippingFee;
 
     /**
-     * @var float
+     * @var float|null
      */
     protected $tax;
 
     /**
-     * @var float
+     * @var float|null
      */
     protected $subtotal;
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getDiscount(): ?float
     {
@@ -40,10 +40,10 @@ class AmountDetail implements JsonSerializable
     }
 
     /**
-     * @param float $discount
+     * @param float|null $discount
      * @return AmountDetail
      */
-    public function setDiscount(float $discount): AmountDetail
+    public function setDiscount(?float $discount): self
     {
         $this->discount = $discount;
 
@@ -51,7 +51,7 @@ class AmountDetail implements JsonSerializable
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getServiceCharge(): ?float
     {
@@ -59,10 +59,10 @@ class AmountDetail implements JsonSerializable
     }
 
     /**
-     * @param float $serviceCharge
+     * @param float|null $serviceCharge
      * @return AmountDetail
      */
-    public function setServiceCharge(float $serviceCharge): AmountDetail
+    public function setServiceCharge(?float $serviceCharge): self
     {
         $this->serviceCharge = $serviceCharge;
 
@@ -70,7 +70,7 @@ class AmountDetail implements JsonSerializable
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getShippingFee(): ?float
     {
@@ -78,10 +78,10 @@ class AmountDetail implements JsonSerializable
     }
 
     /**
-     * @param float $shippingFee
+     * @param float|null $shippingFee
      * @return AmountDetail
      */
-    public function setShippingFee(float $shippingFee): AmountDetail
+    public function setShippingFee(?float $shippingFee): self
     {
         $this->shippingFee = $shippingFee;
 
@@ -89,7 +89,7 @@ class AmountDetail implements JsonSerializable
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getTax(): ?float
     {
@@ -97,10 +97,10 @@ class AmountDetail implements JsonSerializable
     }
 
     /**
-     * @param float $tax
+     * @param float|null $tax
      * @return AmountDetail
      */
-    public function setTax(float $tax): AmountDetail
+    public function setTax(?float $tax): self
     {
         $this->tax = $tax;
 
@@ -108,7 +108,7 @@ class AmountDetail implements JsonSerializable
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getSubtotal(): ?float
     {
@@ -116,10 +116,10 @@ class AmountDetail implements JsonSerializable
     }
 
     /**
-     * @param float $subtotal
+     * @param float|null $subtotal
      * @return AmountDetail
      */
-    public function setSubtotal(float $subtotal): AmountDetail
+    public function setSubtotal(?float $subtotal): self
     {
         $this->subtotal = $subtotal;
 
