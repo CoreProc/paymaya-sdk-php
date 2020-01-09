@@ -43,11 +43,11 @@ class PaymentApiTest extends TestCase
     {
         $this->responses->append($this->successfulPayment());
 
-        $payment = new Payment();
-        $payment->setCustomerId('customer-id');
-        $payment->setCardTokenId('card-token-id');
-        $payment->setCurrency('PHP');
-        $payment->setAmount(100);
+        $payment = (new Payment())
+            ->setCustomerId('customer-id')
+            ->setCardTokenId('card-token-id')
+            ->setCurrency('PHP')
+            ->setAmount(100);
 
         $paymentClient = new PaymentClient($this->mockBaseClient());
         $response = $paymentClient->store($payment);

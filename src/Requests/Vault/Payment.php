@@ -29,9 +29,15 @@ class Payment implements \JsonSerializable
         return $this->currency;
     }
 
-    public function setCurrency($currency): void
+    /**
+     * @param string $currency
+     * @return self
+     */
+    public function setCurrency(string $currency): self
     {
         $this->currency = $currency;
+
+        return $this;
     }
 
     public function getAmount(): string
@@ -40,11 +46,14 @@ class Payment implements \JsonSerializable
     }
 
     /**
-     * @param string|float|int $amount
+     * @param float|int|string $amount
+     * @return self
      */
-    public function setAmount($amount): void
+    public function setAmount($amount): self
     {
         $this->amount = $amount;
+
+        return $this;
     }
 
     public function getCustomerId(): string
@@ -54,10 +63,13 @@ class Payment implements \JsonSerializable
 
     /**
      * @param string $customerId
+     * @return self
      */
-    public function setCustomerId($customerId): void
+    public function setCustomerId(string $customerId): self
     {
         $this->customerId = $customerId;
+
+        return $this;
     }
 
     /**
@@ -70,10 +82,13 @@ class Payment implements \JsonSerializable
 
     /**
      * @param string $cardTokenId
+     * @return self
      */
-    public function setCardTokenId(string $cardTokenId): void
+    public function setCardTokenId(string $cardTokenId): self
     {
         $this->cardTokenId = $cardTokenId;
+
+        return $this;
     }
 
     public function jsonSerialize()
