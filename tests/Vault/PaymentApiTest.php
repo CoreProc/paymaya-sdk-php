@@ -73,7 +73,7 @@ class PaymentApiTest extends TestCase
         RequestInterface $request
     ) {
         $this->assertEquals(
-            "/payments/v1/{$customerId}/cards/{$cardTokenId}/payments",
+            "/payments/v1/customers/{$customerId}/cards/{$cardTokenId}/payments",
             $request->getUri()->getPath()
         );
         $this->assertEquals('POST', $request->getMethod());

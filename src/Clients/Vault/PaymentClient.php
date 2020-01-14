@@ -11,7 +11,12 @@ class PaymentClient extends Client
     {
         return $this->payMayaClient
             ->getClientWithSecretKey()
-            ->post("/payments/v1/{$payment->getCustomerId()}/cards/{$payment->getCardTokenId()}/payments", [
+            ->post(
+                sprintf(
+                    "/payments/v1/customers/%s/cards/%s/payments",
+                    $payment->getCustomerId(),
+                    $payment->getCardTokenId()
+                ), [
                 'json' => $payment,
             ]);
     }
