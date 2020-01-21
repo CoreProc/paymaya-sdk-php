@@ -72,16 +72,6 @@ class PayMayaClient
         $this->environment = $environment;
     }
 
-    public function getPublicAuthKey()
-    {
-        return 'Basic ' . base64_encode($this->publicApiKey . ':');
-    }
-
-    public function getSecretAuthKey()
-    {
-        return 'Basic ' . base64_encode($this->secretApiKey . ':');
-    }
-
     /**
      * @return Client
      */
@@ -89,9 +79,7 @@ class PayMayaClient
     {
         return new Client([
             'base_uri' => $this->baseUrl,
-            'headers' => [
-                'Authorization' => $this->getSecretAuthKey(),
-            ],
+            'auth' => [$this->secretApiKey, ''],
         ]);
     }
 
@@ -102,9 +90,7 @@ class PayMayaClient
     {
         return new Client([
             'base_uri' => $this->baseUrl,
-            'headers' => [
-                'Authorization' => $this->getPublicAuthKey(),
-            ],
+            'auth' => [$this->publicApiKey, ''],
         ]);
     }
 

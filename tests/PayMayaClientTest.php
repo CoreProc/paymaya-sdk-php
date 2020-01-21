@@ -2,50 +2,48 @@
 
 namespace CoreProc\PayMaya\Tests;
 
+use CoreProc\PayMaya\PayMayaClient;
 use Exception;
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
 class PayMayaClientTest extends TestCase
 {
-    use PayMayaDataProvider;
-
     /**
-     * @test
+     * @param $environment
+     * @param $baseUri
+     * @dataProvider environmentProvider
      */
-    public function testPayMayaClient()
+    public function testCreateClient($environment, $baseUri)
     {
-        $paymayaPublicClient = null;
-        $paymayaSecretClient = null;
+        $factory = new PayMayaClient('secret-key', 'public-key', $environment);
 
-        try {
-            $paymayaSecretClient = $this->generatePaymayaClient()->getClientWithSecretKey();
+        $secretClient = $factory->getClientWithSecretKey();
+        $publicClient = $factory->getClientWithPublicKey();
 
-            $paymayaPublicClient = $this->generatePaymayaClient()->getClientWithPublicKey();
-
-        } catch (Exception $exception) {
-            $this->fail('PayMayaClient threw an exception.');
-        }
-
-        $this->assertTrue($paymayaPublicClient instanceof Client);
-        $this->assertTrue($paymayaSecretClient instanceof Client);
-        $this->assertArrayHasKey('Authorization', $paymayaPublicClient->getConfig()['headers']);
+        $this->assertInstanceOf(Client::class, $secretClient);
+        $this->assertEquals($baseUri, $secretClient->getConfig('base_uri'));
+        $this->assertEquals(['secret-key', ''], $secretClient->getConfig('auth'));
+        $this->assertInstanceOf(Client::class, $publicClient);
+        $this->assertEquals($baseUri, $publicClient->getConfig('base_uri'));
+        $this->assertEquals(['public-key', ''], $publicClient->getConfig('auth'));
     }
 
-    /**
-     * @test
-     */
-    public function testPayMayaClientExceptionOnUnkownEnvironment()
+    public static function environmentProvider()
     {
-        try {
-            $paymayaSecretClient = $this->generatePaymayaClient('test')->getClientWithSecretKey();
-        } catch (Exception $exception) {
-            $this->assertTrue($exception->getMessage() === 'The defined PayMaya environment is invalid. Please choose' .
-                ' between production and sandbox.');
+        return [
+            'production' => ['production', 'https://pg.paymaya.com'],
+            'sandbox' => ['sandbox', 'https://pg-sandbox.paymaya.com'],
+        ];
+    }
 
-            return;
-        }
+    public function testThrowExceptionOnInvalidEnvironment()
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage(
+            'The defined PayMaya environment is invalid. Please choose between production and sandbox.'
+        );
 
-        $this->fail('PayMaya client should not accept unknown environments.');
+        new PayMayaClient('secret-key', 'public-key', 'testing');
     }
 }
