@@ -51,6 +51,17 @@ class CardApiTest extends TestCase
         $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
+    public function testPutCard()
+    {
+        $this->responses->append($this->successfulPut());
+
+        $client = new CardClient($this->mockBaseClient('secret'));
+        $response = $client->put($customerId = 'customer-id', $cardId = 'card-token-id', $isDefault = true);
+
+        $this->assertPutRequest($customerId, $cardId, $isDefault, $this->history[0]['request']);
+        $this->assertInstanceOf(ResponseInterface::class, $response);
+    }
+
     private function successfulPost(): ResponseInterface
     {
         return new Response(200, [], json_encode([
@@ -72,6 +83,11 @@ class CardApiTest extends TestCase
         return new Response(200, [], json_encode([
             'cardTokenId' => 'card-token-id-1',
         ]));
+    }
+
+    private function successfulPut(): ResponseInterface
+    {
+        return $this->successfulPost();
     }
 
     private function assertShowRequest($customerId, $cardId, RequestInterface $request)
@@ -115,6 +131,23 @@ class CardApiTest extends TestCase
                     'cancel' => $expected['redirect']->getCancel(),
                 ],
             ]),
+            $request->getBody()
+        );
+    }
+
+    private function assertPutRequest(
+        string $customerId,
+        string $cardTokenId,
+        bool $isDefault,
+        RequestInterface $request
+    ) {
+        $this->assertEquals('PUT', $request->getMethod());
+        $this->assertEquals(
+            "/payments/v1/customers/{$customerId}/cards/{$cardTokenId}",
+            $request->getUri()->getPath()
+        );
+        $this->assertJsonStringEqualsJsonString(
+            json_encode(compact('isDefault')),
             $request->getBody()
         );
     }

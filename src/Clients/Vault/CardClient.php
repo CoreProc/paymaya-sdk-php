@@ -50,4 +50,19 @@ class CardClient extends Client
             ->getClientWithSecretKey()
             ->get("/payments/v1/customers/{$customerId}/cards/{$cardToken}");
     }
+
+    /**
+     * @param string $customerId
+     * @param string $cardToken
+     * @param bool $isDefault
+     * @return ResponseInterface
+     * @throws ClientException
+     */
+    public function put(string $customerId, string $cardToken, bool $isDefault)
+    {
+        return $this->payMayaClient->getClientWithSecretKey()->put(
+            "/payments/v1/customers/{$customerId}/cards/{$cardToken}",
+            ['json' => compact('isDefault')]
+        );
+    }
 }
