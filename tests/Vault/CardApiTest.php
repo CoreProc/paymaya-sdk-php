@@ -40,7 +40,7 @@ class CardApiTest extends TestCase
         $this->assertInstanceOf(ResponseInterface::class, $response);
     }
 
-    public function testShowCards()
+    public function testShowCard()
     {
         $this->responses->append($this->successfulShow());
 
