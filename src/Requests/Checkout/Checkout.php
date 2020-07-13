@@ -2,7 +2,7 @@
 
 namespace CoreProc\PayMaya\Requests\Checkout;
 
-use CoreProc\PayMaya\Models\RedirectUrl;
+use CoreProc\PayMaya\Requests\RedirectUrl;
 use JsonSerializable;
 
 class Checkout implements JsonSerializable
