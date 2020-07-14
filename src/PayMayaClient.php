@@ -101,6 +101,6 @@ class PayMayaClient
      */
     public static function getDataFromResponse(ResponseInterface $response, $assoc = false)
     {
-        return json_decode($response->getBody(), $assoc);
+        return json_decode((string)$response->getBody(), $assoc);
     }
 }
