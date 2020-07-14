@@ -27,7 +27,10 @@ class CustomizeClient extends Client
      */
     public function get()
     {
-        return $this->payMayaClient->getClientWithSecretKey()->get('/checkout/v1/customizations');
+        $response = $this->payMayaClient->getClientWithSecretKey()->get('/checkout/v1/customizations');
+        
+        return json_decode($response->getBody()->getContents());
+         
     }
 
     /**
