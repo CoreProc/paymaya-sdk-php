@@ -67,7 +67,7 @@ class TotalAmount implements JsonSerializable
     /**
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }
