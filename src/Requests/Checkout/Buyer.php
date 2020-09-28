@@ -186,9 +186,9 @@ class Buyer implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'first_name' => $this->getFirstName(),
-            'middle_name' => $this->getMiddleName(),
-            'last_name' => $this->getLastName(),
+            'firstName' => $this->getFirstName(),
+            'middleName' => $this->getMiddleName(),
+            'lastName' => $this->getLastName(),
             'contact' => $this->getContact(),
             'shippingAddress' => $this->getShippingAddress(),
             'billingAddress' => $this->getBillingAddress(),
