@@ -93,6 +93,9 @@ class Payment implements JsonSerializable
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function jsonSerialize()
     {
         return [
