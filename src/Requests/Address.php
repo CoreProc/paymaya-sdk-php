@@ -4,7 +4,7 @@ namespace CoreProc\PayMaya\Requests;
 
 use JsonSerializable;
 
-class Address implements JsonSerializable
+class Address extends PaymayaRequest implements JsonSerializable
 {
     /**
      * @var string|null

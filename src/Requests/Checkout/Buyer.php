@@ -4,9 +4,10 @@ namespace CoreProc\PayMaya\Requests\Checkout;
 
 use CoreProc\PayMaya\Requests\Address;
 use CoreProc\PayMaya\Requests\Contact;
+use CoreProc\PayMaya\Requests\PaymayaRequest;
 use JsonSerializable;
 
-class Buyer implements JsonSerializable
+class Buyer extends PaymayaRequest implements JsonSerializable
 {
     /**
      * @var string|null

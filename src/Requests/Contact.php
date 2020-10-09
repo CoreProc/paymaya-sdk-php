@@ -4,7 +4,7 @@ namespace CoreProc\PayMaya\Requests;
 
 use JsonSerializable;
 
-class Contact implements JsonSerializable
+class Contact extends PaymayaRequest implements JsonSerializable
 {
     /**
      * @var string|null

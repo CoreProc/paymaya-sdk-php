@@ -2,9 +2,10 @@
 
 namespace CoreProc\PayMaya\Requests\Vault;
 
+use CoreProc\PayMaya\Requests\PaymayaRequest;
 use JsonSerializable;
 
-class Payment implements JsonSerializable
+class Payment extends PaymayaRequest implements JsonSerializable
 {
     /**
      * @var string

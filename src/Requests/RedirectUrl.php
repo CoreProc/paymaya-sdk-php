@@ -4,7 +4,7 @@ namespace CoreProc\PayMaya\Requests;
 
 use JsonSerializable;
 
-class RedirectUrl implements JsonSerializable
+class RedirectUrl extends PaymayaRequest implements JsonSerializable
 {
     /**
      * @var string|null

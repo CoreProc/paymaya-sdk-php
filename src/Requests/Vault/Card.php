@@ -2,9 +2,10 @@
 
 namespace CoreProc\PayMaya\Requests\Vault;
 
+use CoreProc\PayMaya\Requests\PaymayaRequest;
 use JsonSerializable;
 
-class Card implements JsonSerializable
+class Card extends PaymayaRequest implements JsonSerializable
 {
     /**
      * Valid card number of Visa or MasterCard

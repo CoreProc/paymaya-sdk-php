@@ -2,9 +2,10 @@
 
 namespace CoreProc\PayMaya\Requests\Checkout;
 
+use CoreProc\PayMaya\Requests\PaymayaRequest;
 use JsonSerializable;
 
-class AmountDetail implements JsonSerializable
+class AmountDetail extends PaymayaRequest implements JsonSerializable
 {
     /**
      * @var float|null
