@@ -25,7 +25,7 @@ class CustomerApiTest extends TestCase
     {
         $customerApi = new CustomerClient($this->generatePaymayaClient());
 
-        $buyer = (new Buyer())
+        $buyer =  Buyer::make()
             ->setFirstName($buyerData['firstName'])
             ->setMiddleName($buyerData['middleName'])
             ->setLastName($buyerData['lastName'])
