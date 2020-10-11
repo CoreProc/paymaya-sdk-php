@@ -4,8 +4,8 @@ namespace CoreProc\PayMaya\Requests;
 
 abstract class PaymayaRequest
 {
-    public static function make(): self
+    public static function make()
     {
-        return self;
+        return new static();
     }
 }
