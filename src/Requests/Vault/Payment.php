@@ -94,6 +94,9 @@ class Payment extends PaymayaRequest implements JsonSerializable
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function jsonSerialize()
     {
         return [
