@@ -32,7 +32,7 @@ class PayMayaClient
 
     const ENVIRONMENT_PRODUCTION = 'production';
 
-    const BASE_URL_PRODUCTION = 'https://pg.paymaya.com';
+    const BASE_URL_PRODUCTION = 'https://pg.maya.ph';
 
     const BASE_URL_SANDBOX = 'https://pg-sandbox.paymaya.com';
 
