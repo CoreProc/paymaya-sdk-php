@@ -27,24 +27,24 @@ https://developers.paymaya.com/blog/entry/api-test-merchants-and-test-cards
 Here is an example of how to use this SDK with checkout. The example is based off the payload found in the documentation.
 
 ``` php
-$payMayaApi = new \CoreProc\PayMaya\PayMayaApi('<SECRET_API_KEY>',
-    '<PUBLIC_API_KEY>', \CoreProc\PayMaya\PayMayaApi::ENVIRONMENT_SANDBOX);
+$payMayaApi = new \CoreProc\PayMaya\PayMayaClient('<SECRET_API_KEY>',
+    '<PUBLIC_API_KEY>', \CoreProc\PayMaya\PayMayaClient::ENVIRONMENT_SANDBOX);
 
-$checkout = new \CoreProc\PayMaya\Requests\Checkout();
+$checkout = new \CoreProc\PayMaya\Requests\Checkout\Checkout();
 
 $checkout->setTotalAmount(
-    (new \CoreProc\PayMaya\Requests\TotalAmount())
+    (new \CoreProc\PayMaya\Requests\Checkout\TotalAmount())
         ->setCurrency('PHP')
         ->setValue(6304.90)
         ->setDetails(
-            (new \CoreProc\PayMaya\Requests\AmountDetail())
+            (new \CoreProc\PayMaya\Requests\Checkout\AmountDetail())
                 ->setDiscount(300.00)
                 ->setServiceCharge(50.00)
                 ->setShippingFee(200.00)
                 ->setTax(691.60)
                 ->setSubtotal(5763.30))
 )->setBuyer(
-    (new \CoreProc\PayMaya\Requests\Buyer())
+    (new \CoreProc\PayMaya\Requests\Checkout\Buyer())
         ->setFirstName('Juan')
         ->setMiddleName('dela')
         ->setLastName('Cruz')
@@ -71,38 +71,38 @@ $checkout->setTotalAmount(
         )
         ->setIpAddress('125.60.148.241')
 )->setItems([
-    (new \CoreProc\PayMaya\Requests\Item())
+    (new \CoreProc\PayMaya\Requests\Checkout\Item())
         ->setName('Canvas Slip Ons')
         ->setCode('CVG-096732')
         ->setDescription('Shoes')
         ->setQuantity(3)
         ->setAmount(
-            (new \CoreProc\PayMaya\Requests\ItemAmount())
+            (new \CoreProc\PayMaya\Requests\Checkout\ItemAmount())
                 ->setValue(1621.10)
                 ->setDetails(
-                    (new \CoreProc\PayMaya\Requests\AmountDetail())
+                    (new \CoreProc\PayMaya\Requests\Checkout\AmountDetail())
                         ->setDiscount(100.00)
                         ->setSubtotal(1721.10)
                 )
         )->setTotalAmount(
-            (new \CoreProc\PayMaya\Requests\TotalAmount())
+            (new \CoreProc\PayMaya\Requests\Checkout\TotalAmount())
                 ->setValue(4863.30)
                 ->setDetails(
-                    (new \CoreProc\PayMaya\Requests\AmountDetail())
+                    (new \CoreProc\PayMaya\Requests\Checkout\AmountDetail())
                         ->setDiscount(300)
                         ->setSubtotal(5163.30)
                 )
         ),
-    (new \CoreProc\PayMaya\Requests\Item())
+    (new \CoreProc\PayMaya\Requests\Checkout\Item())
         ->setName('PU Ballerina Flats')
         ->setCode('CVG-096733')
         ->setDescription('Shoes')
         ->setQuantity(1)
         ->setAmount(
-            (new \CoreProc\PayMaya\Requests\ItemAmount())
+            (new \CoreProc\PayMaya\Requests\Checkout\ItemAmount())
                 ->setValue(600)
         )->setTotalAmount(
-            (new \CoreProc\PayMaya\Requests\TotalAmount())
+            (new \CoreProc\PayMaya\Requests\Checkout\TotalAmount())
                 ->setValue(600)
         ),
 ])->setRedirectUrl(
@@ -112,9 +112,11 @@ $checkout->setTotalAmount(
         ->setCancel('http://shop.test/cancel')
 )->setRequestReferenceNumber('0001');
 
-$checkoutResponse = $payMayaApi->checkout($checkout);
+$checkoutResponse = new \CoreProc\PayMaya\Clients\Checkout\CheckoutClient($payMayaApi);
+$postResponse = $checkoutResponse->post($checkout);
 
-echo $checkoutResponse->getRedirectUrl();
+echo PayMayaClient::getDataFromResponse($postResponse)->redirectUrl;
+
 ```
 
 ### Testing
