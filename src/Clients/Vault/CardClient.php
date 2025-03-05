@@ -65,4 +65,17 @@ class CardClient extends Client
             ['json' => compact('isDefault')]
         );
     }
+
+    /**
+     * @param string $customerId
+     * @param string $cardToken
+     * @return ResponseInterface
+     * @throws ClientException
+     */
+    public function delete(string $customerId, string $cardToken)
+    {
+        return $this->payMayaClient
+            ->getClientWithSecretKey()
+            ->delete("/payments/v1/customers/{$customerId}/cards/{$cardToken}");
+    }
 }
