@@ -32,7 +32,7 @@ class PayMayaClientTest extends TestCase
     public static function environmentProvider()
     {
         return [
-            'production' => ['production', 'https://pg.paymaya.com'],
+            'production' => ['production', 'https://pg.maya.ph'],
             'sandbox' => ['sandbox', 'https://pg-sandbox.paymaya.com'],
         ];
     }
